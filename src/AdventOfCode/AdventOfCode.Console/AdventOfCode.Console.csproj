@@ -8,6 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <EmbeddedResource Include="Challenges\Day02\Input.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
       <None Remove="Challenges\Day01\Input.txt" />
       <EmbeddedResource Include="Challenges\Day01\Input.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
