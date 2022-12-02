@@ -1,22 +1,20 @@
-﻿using System.Reflection.Metadata.Ecma335;
-
-namespace AdventOfCode.Challenges;
+﻿namespace AdventOfCode.Challenges;
 
 public class Day02
 {
     private readonly string[] _input;
-    
+
     public Day02(string[] Input) => _input = Input;
 
     public int SolvePart1()
     {
         int round = 0,
             totalScore = 0;
-        
+
         while (round < _input.Length)
         {
             var game = _input.Skip(round).Take(1).Select(x => x.Split(" ")).First();
-            
+
             var shapeScore = GetShapeScore(game[1]);
             var playScore = GetPlayScore(game);
             totalScore += (shapeScore + playScore);
@@ -31,15 +29,15 @@ public class Day02
     {
         int round = 0,
             totalScore = 0;
-        
+
         while (round < _input.Length)
         {
             var game = _input.Skip(round).Take(1).Select(x => x.Split(" ")).First();
-            
+
             // figure out what shape to use
             var shapeToUse = GetShapeToUse(game);
             game[1] = shapeToUse;
-            
+
             var shapeScore = GetShapeScore(game[1]);
             var playScore = GetPlayScore(game);
             totalScore += (shapeScore + playScore);
@@ -57,7 +55,7 @@ public class Day02
         "Z" => 3,
         _ => throw new ArgumentOutOfRangeException(nameof(shape), shape, null)
     };
-    
+
     private static int GetPlayScore(string[] game) => game[0] switch
     {
         "A" => game[1] switch
@@ -83,7 +81,7 @@ public class Day02
         },
         _ => 0
     };
-    
+
     private string GetShapeToUse(string[] game) => game[0] switch
     {
         "A" => game[1] switch
