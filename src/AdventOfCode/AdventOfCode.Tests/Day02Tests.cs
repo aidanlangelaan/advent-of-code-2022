@@ -28,12 +28,12 @@ public class Day02Tests
     }
     
     [Test]
-    public void Example_Part2_ShoudReturn45000()
+    public void Example_Part2_ShoudReturn12()
     {
         // act
         var result = _day02.SolvePart2();
 
         // assert
-        Assert.That(result, Is.EqualTo(45000));
+        Assert.That(result, Is.EqualTo(12));
     }
 }

@@ -13,9 +13,9 @@ Console.WriteLine("- Day 02 -");
 Day02 day02 = new Day02(File.ReadAllLines("Challenges\\Day02\\Input.txt"));
 var day02Part1 = day02.SolvePart1();
 Console.WriteLine($"part 1 result: {day02Part1}");
-// var day02Part2 = day02.SolvePart2();
-// Console.WriteLine($"part 2 result: {day02Part2}\r\n");
-//
+var day02Part2 = day02.SolvePart2();
+Console.WriteLine($"part 2 result: {day02Part2}\r\n");
+
 // Console.WriteLine("- Day 03 -");
 // Day03 day03 = new Day03(File.ReadAllLines("Challenges\\Day03\\Input.txt"));
 // var day03Part1 = day03.SolvePart1();
