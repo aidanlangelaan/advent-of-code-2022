@@ -11,20 +11,20 @@ public class Day02Tests
     {
         var testInput = new[]
         {
-            "1000", "2000", "3000", "", "4000", "", "5000", "6000", "", "7000", "8000", "9000", "", "10000"
+            "A Y", "B X", "C Z"
         };
         
         _day02 = new Day02(testInput);
     }
 
     [Test]
-    public void Example_Part1_ShoudReturn24000()
+    public void Example_Part1_ShoudReturn15()
     {
         // act
         var result = _day02.SolvePart1();
 
         // assert
-        Assert.That(result, Is.EqualTo(24000));
+        Assert.That(result, Is.EqualTo(15));
     }
     
     [Test]
