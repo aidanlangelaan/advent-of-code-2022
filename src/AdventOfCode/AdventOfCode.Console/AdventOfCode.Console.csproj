@@ -20,4 +20,8 @@
       </EmbeddedResource>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\AdventOfCode.Core\AdventOfCode.Core.csproj" />
+    </ItemGroup>
+
 </Project>

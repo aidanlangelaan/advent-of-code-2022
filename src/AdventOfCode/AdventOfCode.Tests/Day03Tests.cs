@@ -11,29 +11,29 @@ public class Day03Tests
     {
         var testInput = new[]
         {
-            "A Y", "B X", "C Z"
+            "1", "2", "3"
         };
         
         _day03 = new Day03(testInput);
     }
 
     [Test]
-    public void Example_Part1_ShoudReturn15()
+    public void Example_Part1_ShouldReturn6()
     {
         // act
         var result = _day03.SolvePart1();
 
         // assert
-        Assert.That(result, Is.EqualTo(15));
+        Assert.That(result, Is.EqualTo(6));
     }
     
     [Test]
-    public void Example_Part2_ShoudReturn12()
+    public void Example_Part2_ShoudReturn3()
     {
         // act
         var result = _day03.SolvePart2();
 
         // assert
-        Assert.That(result, Is.EqualTo(12));
+        Assert.That(result, Is.EqualTo(3));
     }
 }

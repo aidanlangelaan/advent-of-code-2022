@@ -1,12 +1,18 @@
-﻿namespace AdventOfCode.Challenges;
+﻿using AdventOfCode.Core;
 
-public class Day02
+namespace AdventOfCode.Challenges;
+
+public class Day02 : Challenge<Day02>
 {
-    private readonly string[] _input;
+    public Day02(string[] Input) : base(Input)
+    {
+    }
 
-    public Day02(string[] Input) => _input = Input;
+    public Day02() : base()
+    {
+    }
 
-    public int SolvePart1()
+    public override int SolvePart1()
     {
         int round = 0,
             totalScore = 0;
@@ -25,7 +31,7 @@ public class Day02
         return totalScore;
     }
 
-    public int SolvePart2()
+    public override int SolvePart2()
     {
         int round = 0,
             totalScore = 0;

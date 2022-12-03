@@ -1,26 +1,32 @@
-﻿namespace AdventOfCode.Challenges;
+﻿using AdventOfCode.Core;
 
-public class Day01
+namespace AdventOfCode.Challenges;
+
+public class Day01 : Challenge<Day01>
 {
-    private readonly string[] _input;
-    
-    public Day01(string[] Input) => _input = Input;
+    public Day01(string[] Input) : base(Input)
+    {
+    }
 
-    public int SolvePart1()
+    public Day01() : base()
+    {
+    }
+
+    public override int SolvePart1()
     {
         var calorieTotals = GetCalorieTotals();
 
         return calorieTotals.Max();
     }
     
-    public int SolvePart2()
+    public override int SolvePart2()
     {
         var calorieTotals = GetCalorieTotals();
         
         return calorieTotals.OrderByDescending(x => x).Take(3).Sum();
     }
 
-    private List<int> GetCalorieTotals()
+    private IEnumerable<int> GetCalorieTotals()
     {
         var calorieTotals = new List<int>();
         var penguinCount = 0;

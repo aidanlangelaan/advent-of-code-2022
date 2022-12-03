@@ -1,17 +1,23 @@
-﻿namespace AdventOfCode.Challenges;
+﻿using AdventOfCode.Core;
 
-public class Day03
+namespace AdventOfCode.Challenges;
+
+public class Day03 : Challenge<Day03>
 {
-    private readonly string[] _input;
-    
-    public Day03(string[] Input) => _input = Input;
+    public Day03(string[] Input) : base(Input)
+    {
+    }
 
-    public int SolvePart1()
+    public Day03() : base()
+    {
+    }
+    
+    public override int SolvePart1()
     {
         throw new NotImplementedException();
     }
 
-    public int SolvePart2()
+    public override int SolvePart2()
     {
         throw new NotImplementedException();
     }

@@ -18,7 +18,7 @@ public class Day02Tests
     }
 
     [Test]
-    public void Example_Part1_ShoudReturn15()
+    public void Example_Part1_ShouldReturn15()
     {
         // act
         var result = _day02.SolvePart1();
@@ -28,7 +28,7 @@ public class Day02Tests
     }
     
     [Test]
-    public void Example_Part2_ShoudReturn12()
+    public void Example_Part2_ShouldReturn12()
     {
         // act
         var result = _day02.SolvePart2();

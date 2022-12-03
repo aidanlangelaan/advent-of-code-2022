@@ -18,7 +18,7 @@ public class Day01Tests
     }
 
     [Test]
-    public void Example_Part1_ShoudReturn24000()
+    public void Example_Part1_ShouldReturn24000()
     {
         // act
         var result = _day01.SolvePart1();
@@ -28,7 +28,7 @@ public class Day01Tests
     }
     
     [Test]
-    public void Example_Part2_ShoudReturn45000()
+    public void Example_Part2_ShouldReturn45000()
     {
         // act
         var result = _day01.SolvePart2();
