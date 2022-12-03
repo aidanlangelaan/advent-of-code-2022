@@ -11,20 +11,25 @@ public class Day03Tests
     {
         var testInput = new[]
         {
-            "1", "2", "3"
+            "vJrwpWtwJgWrhcsFMMfFFhFp",
+            "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
+            "PmmdzqPrVvPwwTWBwg",
+            "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn",
+            "ttgJtRGJQctTZtZT",
+            "CrZsJsPPZsGzwwsLwLmpwMDw",
         };
         
         _day03 = new Day03(testInput);
     }
 
     [Test]
-    public void Example_Part1_ShouldReturn6()
+    public void Example_Part1_ShouldReturn157()
     {
         // act
         var result = _day03.SolvePart1();
 
         // assert
-        Assert.That(result, Is.EqualTo(6));
+        Assert.That(result, Is.EqualTo(157));
     }
     
     [Test]
