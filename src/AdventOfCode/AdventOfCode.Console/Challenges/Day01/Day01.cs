@@ -1,7 +1,9 @@
-﻿using AdventOfCode.Core;
+﻿using System.ComponentModel;
+using AdventOfCode.Core;
 
 namespace AdventOfCode.Challenges;
 
+[Description("Day 01")]
 public class Day01 : Challenge<Day01>
 {
     public Day01(string[] Input) : base(Input)

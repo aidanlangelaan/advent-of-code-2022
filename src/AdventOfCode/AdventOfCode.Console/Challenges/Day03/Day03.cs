@@ -1,8 +1,10 @@
-﻿using System.Reflection.Metadata;
+﻿using System.ComponentModel;
+using System.Reflection.Metadata;
 using AdventOfCode.Core;
 
 namespace AdventOfCode.Challenges;
 
+[Description("Day 03")]
 public class Day03 : Challenge<Day03>
 {
     public Day03(string[] Input) : base(Input)
