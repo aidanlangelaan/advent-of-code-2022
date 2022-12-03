@@ -27,7 +27,7 @@ public abstract class Challenge<TDay>
         var descriptions = (DescriptionAttribute[])typeof(TDay).GetCustomAttributes(typeof(DescriptionAttribute), false);
         if (descriptions.Length != 0)
         {
-            Console.WriteLine($"- {descriptions.First().Description} -");
+            Console.WriteLine($"\r\n- {descriptions.First().Description} -");
         }
     }
 }
