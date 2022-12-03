@@ -24,12 +24,7 @@ public class Day03 : Challenge<Day03>
             
             var sharedItem = comp1.Intersect(comp2).First();
             
-            var priority = ((int) char.ToUpper(sharedItem)) - 64;
-            if (char.IsUpper(sharedItem))
-            {
-                priority += 26;
-            }
-
+            var priority = CalculatePriority(sharedItem);
             prioritySum += priority;
         }
 
@@ -38,6 +33,33 @@ public class Day03 : Challenge<Day03>
 
     public override int SolvePart2()
     {
-        throw new NotImplementedException();
+        int bagGroupCount = _input.Length / 3, 
+            groupCount = 0,
+            prioritySum = 0;
+
+        while (groupCount < bagGroupCount)
+        {
+            var bags = _input.Skip(groupCount * 3).Take(3).Select(x => x.ToList()).ToList();
+
+            var sharedItem = bags.Aggregate<IEnumerable<char>>((prev, next) => prev.Intersect(next)).First();
+            
+            var priority = CalculatePriority(sharedItem);
+            prioritySum += priority;
+            
+            groupCount += 1;
+        }
+
+        return prioritySum;
+    }
+
+    private static int CalculatePriority(char sharedItem)
+    {
+        var priority = char.ToUpper(sharedItem) - 64;
+        if (char.IsUpper(sharedItem))
+        {
+            priority += 26;
+        }
+
+        return priority;
     }
 }
