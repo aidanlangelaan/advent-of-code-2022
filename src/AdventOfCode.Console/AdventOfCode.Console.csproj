@@ -8,6 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <EmbeddedResource Include="Challenges\Day01\Input.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
       <EmbeddedResource Include="Challenges\Day02\Input.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
@@ -15,10 +18,6 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
       <EmbeddedResource Include="Challenges\Day04\Input.txt">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </EmbeddedResource>
-      <None Remove="Challenges\Day01\Input.txt" />
-      <EmbeddedResource Include="Challenges\Day01\Input.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
     </ItemGroup>
