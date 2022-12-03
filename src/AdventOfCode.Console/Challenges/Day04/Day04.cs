@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Reflection.Metadata;
 using AdventOfCode.Core;
 
 namespace AdventOfCode.Challenges;
@@ -14,7 +13,7 @@ public class Day04 : Challenge<Day04>
     public Day04() : base()
     {
     }
-    
+
     public override int SolvePart1()
     {
         throw new NotImplementedException();
