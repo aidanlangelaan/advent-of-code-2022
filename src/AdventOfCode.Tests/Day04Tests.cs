@@ -11,25 +11,25 @@ public class Day04Tests
     {
         var testInput = new[]
         {
-            "vJrwpWtwJgWrhcsFMMfFFhFp",
-            "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
-            "PmmdzqPrVvPwwTWBwg",
-            "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn",
-            "ttgJtRGJQctTZtZT",
-            "CrZsJsPPZsGzwwsLwLmpwMDw",
+            "2-4,6-8",
+            "2-3,4-5",
+            "5-7,7-9",
+            "2-8,3-7",
+            "6-6,4-6",
+            "2-6,4-8",
         };
         
         _day04 = new Day04(testInput);
     }
 
     [Test]
-    public void Example_Part1_ShouldReturn157()
+    public void Example_Part1_ShouldReturn2()
     {
         // act
         var result = _day04.SolvePart1();
 
         // assert
-        Assert.That(result, Is.EqualTo(157));
+        Assert.That(result, Is.EqualTo(2));
     }
     
     [Test]
