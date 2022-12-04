@@ -3,14 +3,14 @@ using AdventOfCode.Core;
 
 namespace AdventOfCode.Challenges;
 
-[Description("Day {{day_number}}")]
-public class Day{{day_number}} : Challenge<Day{{day_number}}>
+[Description("Day 05")]
+public class Day05 : Challenge<Day05>
 {
-    public Day{{day_number}}(string[] input) : base(Input)
+    public Day05(string[] Input) : base(Input)
     {
     }
 
-    public Day{{day_number}}() : base()
+    public Day05() : base()
     {
     }
     
