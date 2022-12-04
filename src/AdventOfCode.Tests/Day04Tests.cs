@@ -33,12 +33,12 @@ public class Day04Tests
     }
     
     [Test]
-    public void Example_Part2_ShoudReturn70()
+    public void Example_Part2_ShouldReturn4()
     {
         // act
         var result = _day04.SolvePart2();
 
         // assert
-        Assert.That(result, Is.EqualTo(70));
+        Assert.That(result, Is.EqualTo(4));
     }
 }
