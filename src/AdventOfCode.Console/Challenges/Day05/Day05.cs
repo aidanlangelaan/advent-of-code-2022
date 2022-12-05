@@ -18,7 +18,17 @@ public class Day05 : Challenge<Day05>
     public override int SolvePart1()
     {
         var (stackList, moveDetails) = ParseInput();
-        stackList = PerformMovesOnStacks(moveDetails, stackList);
+        stackList = PerformMovesOnStacks(moveDetails, stackList, false);
+
+        var topCrates = stackList.Aggregate(string.Empty, (current, stack) => current + stack.Last());
+        
+        return 0;
+    }
+    
+    public override int SolvePart2()
+    {
+        var (stackList, moveDetails) = ParseInput();
+        stackList = PerformMovesOnStacks(moveDetails, stackList, true);
 
         var topCrates = stackList.Aggregate(string.Empty, (current, stack) => current + stack.Last());
         
@@ -69,7 +79,7 @@ public class Day05 : Challenge<Day05>
     private static IEnumerable<Match[]> ParseMoves(IEnumerable<string> moves) =>
         moves.Select(x => Regex.Matches(x, @"\d+").ToArray());
     
-    private static List<List<char>> PerformMovesOnStacks(IEnumerable<Match[]> moveDetails, List<List<char>> stackList)
+    private static List<List<char>> PerformMovesOnStacks(IEnumerable<Match[]> moveDetails, List<List<char>> stackList, bool supportsMultipleCrates)
     {
         foreach (var move in moveDetails)
         {
@@ -79,16 +89,14 @@ public class Day05 : Challenge<Day05>
 
             var movingCrates = stackList[stackFrom].GetRange(stackList[stackFrom].Count - cratesToMove, cratesToMove);
             stackList[stackFrom].RemoveRange(stackList[stackFrom].Count - cratesToMove, cratesToMove);
-            movingCrates.Reverse();
 
+            if (!supportsMultipleCrates)
+            {
+                movingCrates.Reverse();   
+            }
             stackList[stackTo].AddRange(movingCrates);
         }
 
         return stackList;
-    }
-    
-    public override int SolvePart2()
-    {
-        throw new NotImplementedException();
     }
 }
