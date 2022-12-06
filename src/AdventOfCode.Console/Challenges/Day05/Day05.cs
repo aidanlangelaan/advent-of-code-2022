@@ -21,6 +21,7 @@ public class Day05 : Challenge<Day05>
         stackList = PerformMovesOnStacks(moveDetails, stackList, false);
 
         var topCrates = stackList.Aggregate(string.Empty, (current, stack) => current + stack.Last());
+        Console.WriteLine($"P1: {topCrates}");
         
         return 0;
     }
@@ -31,7 +32,7 @@ public class Day05 : Challenge<Day05>
         stackList = PerformMovesOnStacks(moveDetails, stackList, true);
 
         var topCrates = stackList.Aggregate(string.Empty, (current, stack) => current + stack.Last());
-        
+        Console.WriteLine($"P2: {topCrates}");
         return 0;
     }
 
