@@ -14,24 +14,25 @@ public class Day06 : Challenge<Day06>
     {
     }
     
-    public override int SolvePart1()
+    public override int SolvePart1() =>
+        GetMarkerPosition(4);
+
+    public override int SolvePart2() =>
+        GetMarkerPosition(14);
+    
+    private int GetMarkerPosition(int distinctAmount)
     {
         var dataStream = _input.First().ToArray();
         var markerPosition = 0;
         for (var i = 0; i < dataStream.Length; i++)
         {
-            var check = dataStream.Skip(i).Take(4).Distinct();
-            if (check.Count() < 4) continue;
-            
-            markerPosition = i + 4;
+            var check = dataStream.Skip(i).Take(distinctAmount).Distinct();
+            if (check.Count() < distinctAmount) continue;
+
+            markerPosition = i + distinctAmount;
             break;
         }
 
         return markerPosition;
-    }
-
-    public override int SolvePart2()
-    {
-        throw new NotImplementedException();
     }
 }
