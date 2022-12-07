@@ -25,13 +25,22 @@ public class Day07 : Challenge<Day07>
             .Aggregate(0, (current, size) => (int)(current + size));
 
         Console.WriteLine($"P1: {totalSize}");
-        
         return 0;
     }
 
     public override int SolvePart2()
     {
-        throw new NotImplementedException();
+        var directories = GetSizePerDirectory();
+        var totalSizes = directories
+            .Select(path => directories
+                .Where(x => x.Item1.StartsWith(path.Item1, StringComparison.Ordinal))
+                .Sum(x => x.Item2));
+
+        var remainingDiscSpace = 70000000 - totalSizes.OrderDescending().First();
+        var sizeToRemove = totalSizes.Where(x => x >= 30000000 - remainingDiscSpace).Order().First();
+        
+        Console.WriteLine($"P2: {sizeToRemove}");
+        return 0;
     }
 
     private IEnumerable<(string, long)> GetSizePerDirectory()
