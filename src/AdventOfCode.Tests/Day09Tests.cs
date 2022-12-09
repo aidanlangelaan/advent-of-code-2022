@@ -11,20 +11,27 @@ public class Day09Tests
     {
         var testInput = new[]
         {
-            "put test values here",
+            "R 4",
+            "U 4",
+            "L 3",
+            "D 1",
+            "R 4",
+            "D 1",
+            "L 5",
+            "R 2",
         };
         
         _day09 = new Day09(testInput);
     }
 
     [Test]
-    public void Example_Part1_ShouldReturn123()
+    public void Example_Part1_ShouldReturn13()
     {
         // act
         var result = _day09.SolvePart1();
 
         // assert
-        Assert.That(result, Is.EqualTo(123));
+        Assert.That(result, Is.EqualTo(13));
     }
     
     [Test]

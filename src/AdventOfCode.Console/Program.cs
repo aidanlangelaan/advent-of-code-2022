@@ -31,6 +31,10 @@ Console.WriteLine("--- Advent of Code 2022 ---");
 // day07.SolveDayPart1();
 // day07.SolveDayPart2();
 
-var day08 = new Solver<Day08>(true);
-day08.SolveDayPart1();
-day08.SolveDayPart2();
+// var day08 = new Solver<Day08>(true);
+// day08.SolveDayPart1();
+// day08.SolveDayPart2();
+
+var day09 = new Solver<Day09>(true);
+day09.SolveDayPart1();
+//day09.SolveDayPart2();
