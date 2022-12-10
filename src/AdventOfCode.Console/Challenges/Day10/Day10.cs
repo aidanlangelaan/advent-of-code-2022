@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using AdventOfCode.Core;
+using Microsoft.VisualBasic.FileIO;
 
 namespace AdventOfCode.Challenges;
 
@@ -16,8 +17,32 @@ public class Day10 : Challenge<Day10>
     
     public override int SolvePart1()
     {
-        throw new NotImplementedException();
+        var messageSignalCycle = 20;
+        var signalStrengths = new List<int>();
+        var cycles = new List<int>();
+        
+        foreach (var t in _input)
+        {
+            cycles.Add(0);
+            if (t.Equals("noop")) continue;
+            
+            cycles.Add(int.Parse(t.Split(" ")[1]));
+        }
+
+        var x = 1;
+        for (var i = 0; i < cycles.Count; i++)
+        {
+            if (i == messageSignalCycle - 1)
+            {
+                signalStrengths.Add((i + 1) * x);
+                messageSignalCycle += 40;
+            }
+            x += cycles[i];
+        }
+
+        return signalStrengths.Sum();
     }
+
 
     public override int SolvePart2()
     {
