@@ -33,7 +33,7 @@ public class Day09Tests
             "U 20",
         };
         
-        _day09 = new Day09(testInputP1);
+        _day09 = new Day09(testInputP2);
     }
 
     [Test]

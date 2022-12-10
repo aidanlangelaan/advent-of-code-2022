@@ -18,13 +18,27 @@ public class Day09 : Challenge<Day09>
     {
         var movements = ParseMovements();
 
-        var positions = GetTailPositions(movements);
+        var positions = GetTailPositions(movements, 2);
+        return positions.Distinct().Count();
+    }
+    
+    
+    public override int SolvePart2()
+    {
+        var movements = ParseMovements();
+
+        var positions = GetTailPositions(movements, 10);
         return positions.Distinct().Count();
     }
 
-    private List<(int, int)> GetTailPositions(IEnumerable<(string, int)> movements)
+    private IEnumerable<(string, int)> ParseMovements() =>
+        _input
+            .Select(line => line.Split(" "))
+            .Select(x => (x[0], int.Parse(x[1])));
+
+    private List<(int, int)> GetTailPositions(IEnumerable<(string, int)> movements, int knotCount)
     {
-        var knots = Enumerable.Repeat((0, 0), 2).ToArray();
+        var knots = Enumerable.Repeat((0, 0), knotCount).ToArray();
         var tailPositions = new List<(int, int)>();
         foreach (var move in movements)
         {
@@ -34,6 +48,7 @@ public class Day09 : Challenge<Day09>
                 tailPositions.Add(knots.Last());
             }
         }
+
         return tailPositions;
     }
 
@@ -46,6 +61,7 @@ public class Day09 : Challenge<Day09>
             "D" => knots[0] with { Item2 = knots[0].Item2 - 1 },
             "L" => knots[0] with { Item1 = knots[0].Item1 - 1 },
             "R" => knots[0] with { Item1 = knots[0].Item1 + 1 },
+            _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
         };
 
         // move each knot
@@ -53,28 +69,16 @@ public class Day09 : Challenge<Day09>
         {
             var currentKnot = knots[i];
             var previousKnot = knots[i - 1];
-            
+
             var deltaX = previousKnot.Item1 - currentKnot.Item1;
             var deltaY = previousKnot.Item2 - currentKnot.Item2;
 
             if (Math.Abs(deltaX) > 1 || Math.Abs(deltaY) > 1)
             {
                 knots[i] = (currentKnot.Item1 + Math.Sign(deltaX), currentKnot.Item2 + Math.Sign(deltaY));
-            } 
+            }
         }
 
         return knots;
     }
-
-    public override int SolvePart2()
-    {
-        var movements = ParseMovements();
-        
-        return 0;
-    }
-
-    private IEnumerable<(string, int)> ParseMovements() =>
-        _input
-            .Select(line => line.Split(" "))
-            .Select(x => (x[0], int.Parse(x[1])));
 }
