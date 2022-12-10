@@ -9,7 +9,7 @@ public class Day09Tests
     [SetUp]
     public void Setup()
     {
-        var testInput = new[]
+        var testInputP1 = new[]
         {
             "R 4",
             "U 4",
@@ -21,7 +21,19 @@ public class Day09Tests
             "R 2",
         };
         
-        _day09 = new Day09(testInput);
+        var testInputP2 = new[]
+        {
+            "R 5",
+            "U 8",
+            "L 8",
+            "D 3",
+            "R 17",
+            "D 10",
+            "L 25",
+            "U 20",
+        };
+        
+        _day09 = new Day09(testInputP1);
     }
 
     [Test]
@@ -35,12 +47,12 @@ public class Day09Tests
     }
     
     [Test]
-    public void Example_Part2_ShouldReturn123()
+    public void Example_Part2_ShouldReturn36()
     {
         // act
         var result = _day09.SolvePart2();
 
         // assert
-        Assert.That(result, Is.EqualTo(123));
+        Assert.That(result, Is.EqualTo(36));
     }
 }

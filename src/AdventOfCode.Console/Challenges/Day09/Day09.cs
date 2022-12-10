@@ -18,98 +18,63 @@ public class Day09 : Challenge<Day09>
     {
         var movements = ParseMovements();
 
-        var visitedPositionsByTail = new List<(int, int)> { (0, 0) };
-        int tailX = 0,
-            tailY = 0,
-            headX = 0,
-            headY = 0;
+        var positions = GetTailPositions(movements);
+        return positions.Distinct().Count();
+    }
+
+    private List<(int, int)> GetTailPositions(IEnumerable<(string, int)> movements)
+    {
+        var knots = Enumerable.Repeat((0, 0), 2).ToArray();
+        var tailPositions = new List<(int, int)>();
         foreach (var move in movements)
         {
-            for (var i = 1; i <= move.Item2; i++)
+            for (var i = 0; i < move.Item2; i++)
             {
-                switch (move.Item1)
-                {
-                    case "U":
-                        headY += 1;
-                        if (CoversOrInSurroundingArea(tailX, tailY, headX, headY))
-                        {
-                            continue;
-                        }
-
-                        if (headY > tailY && headX != tailX)
-                        {
-                            tailX = headX;
-                        }
-
-                        tailY += 1;
-                        break;
-                    case "D":
-                        headY -= 1;
-                        if (CoversOrInSurroundingArea(tailX, tailY, headX, headY))
-                        {
-                            continue;
-                        }
-
-                        if (headY < tailY && headX != tailX)
-                        {
-                            tailX = headX;
-                        }
-
-                        tailY -= 1;
-                        break;
-                    case "L":
-                        headX -= 1;
-                        if (CoversOrInSurroundingArea(tailX, tailY, headX, headY))
-                        {
-                            continue;
-                        }
-
-                        if (headX < tailX && headX != tailX)
-                        {
-                            tailY = headY;
-                        }
-
-                        tailX -= 1;
-                        break;
-                    case "R":
-                        headX += 1;
-                        if (CoversOrInSurroundingArea(tailX, tailY, headX, headY))
-                        {
-                            continue;
-                        }
-
-                        if (headX > tailX && headX != tailX)
-                        {
-                            tailY = headY;
-                        }
-                        tailX += 1;
-                        break;
-                }
-
-                visitedPositionsByTail.Add((tailX, tailY));
+                knots = MoveHead(knots, move.Item1);
+                tailPositions.Add(knots.Last());
             }
         }
-        return visitedPositionsByTail.Distinct().Count();
+        return tailPositions;
+    }
+
+    private (int, int)[] MoveHead((int, int)[] knots, string direction)
+    {
+        // move the head
+        knots[0] = direction switch
+        {
+            "U" => knots[0] with { Item2 = knots[0].Item2 + 1 },
+            "D" => knots[0] with { Item2 = knots[0].Item2 - 1 },
+            "L" => knots[0] with { Item1 = knots[0].Item1 - 1 },
+            "R" => knots[0] with { Item1 = knots[0].Item1 + 1 },
+        };
+
+        // move each knot
+        for (var i = 1; i < knots.Length; i++)
+        {
+            var currentKnot = knots[i];
+            var previousKnot = knots[i - 1];
+            
+            var deltaX = previousKnot.Item1 - currentKnot.Item1;
+            var deltaY = previousKnot.Item2 - currentKnot.Item2;
+
+            if (Math.Abs(deltaX) > 1 || Math.Abs(deltaY) > 1)
+            {
+                knots[i] = (currentKnot.Item1 + Math.Sign(deltaX), currentKnot.Item2 + Math.Sign(deltaY));
+            } 
+        }
+
+        return knots;
     }
 
     public override int SolvePart2()
     {
-        throw new NotImplementedException();
+        var movements = ParseMovements();
+        
+        return 0;
     }
 
     private IEnumerable<(string, int)> ParseMovements() =>
         _input
             .Select(line => line.Split(" "))
             .Select(x => (x[0], int.Parse(x[1])));
-
-    private static bool CoversOrInSurroundingArea(int tailX, int tailY, int headX, int headY) =>
-        tailX == headX && tailY == headY // covered
-        || tailX == headX && tailY + 1 == headY // top
-        || tailX == headX && tailY - 1 == headY // bottom
-        || tailY == headY && tailX + 1 == headX // right
-        || tailY == headY && tailX - 1 == headX // left
-        || tailY + 1 == headY && tailX - 1 == headX // top-left
-        || tailY + 1 == headY && tailX + 1 == headX // top-right
-        || tailY - 1 == headY && tailX - 1 == headX // bottom-left
-        || tailY - 1 == headY && tailX + 1 == headX; // bottom-right
 }
