@@ -45,4 +45,4 @@ Console.WriteLine("--- Advent of Code 2022 ---");
 
 var day11 = new Solver<Day11>(true);
 day11.SolveDayPart1();
-// day11.SolveDayPart2();
+day11.SolveDayPart2();
