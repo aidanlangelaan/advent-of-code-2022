@@ -2,9 +2,9 @@ using AdventOfCode.Challenges;
 
 namespace AdventOfCode.Tests;
 
-public class Day11Tests
+public class Day12Tests
 {
-    private Day11 _day11;
+    private Day12 _day12;
     
     [SetUp]
     public void Setup()
@@ -14,14 +14,14 @@ public class Day11Tests
             "put test values here",
         };
         
-        _day11 = new Day11(testInput);
+        _day12 = new Day12(testInput);
     }
 
     [Test]
     public void Example_Part1_ShouldReturn0()
     {
         // act
-        var result = _day11.SolvePart1();
+        var result = _day12.SolvePart1();
 
         // assert
         Assert.That(result, Is.EqualTo(0));
@@ -31,7 +31,7 @@ public class Day11Tests
     public void Example_Part2_ShouldReturn0()
     {
         // act
-        var result = _day11.SolvePart2();
+        var result = _day12.SolvePart2();
 
         // assert
         Assert.That(result, Is.EqualTo(0));
