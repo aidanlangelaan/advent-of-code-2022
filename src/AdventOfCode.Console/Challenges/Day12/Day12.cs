@@ -19,13 +19,19 @@ public class Day12 : Challenge<Day12>
     {
         var (map, startPosition, endPosition) = ParseMap();
         
-        var distances = FindDistances(map, startPosition);
+        var distances = FindDistances(map, startPosition, false);
         return distances[endPosition].Distance;
     }
 
     public override int SolvePart2()
     {
-        throw new NotImplementedException();
+        var (map, startPosition, endPosition) = ParseMap();
+        
+        var distances = FindDistances(map, endPosition, true);
+        return distances
+            .Where(x => x.Value.HeightValue is 0 or 1)
+            .Select(x => x.Value.Distance)
+            .Min();
     }
 
     private (Dictionary<(int, int), Node> map, (int, int) startPosition, (int, int) endPosition) ParseMap()
@@ -58,10 +64,13 @@ public class Day12 : Challenge<Day12>
         return (map, startPosition, endPosition);
     }
     
-    // Use bread-width search to determine the distance between the nodes in the map   
-    private ImmutableDictionary<(int, int), Node> FindDistances(IReadOnlyDictionary<(int, int), Node> map, (int, int) startPosition)
+    /// <summary>
+    /// Use bread-width search to determine the distance between the nodes in the map
+    /// </summary>
+    /// <param name="reverse">If reverse is false, calculation starts from the start node (S) to the end node (E). If true the calculation is performed from end to start.</param>
+    private ImmutableDictionary<(int, int), Node> FindDistances(IReadOnlyDictionary<(int, int), Node> map, (int, int) startPosition, bool reverse)
     {
-        var visited = new Dictionary<(int, int), Node> { { startPosition, new Node { HeightValue = 0 } } };
+        var visited = new Dictionary<(int, int), Node> { { startPosition, new Node { HeightValue = reverse ? 27 : 0 } } };
         var queue = new Queue<(int, int)>();
         queue.Enqueue(startPosition);
 
@@ -77,8 +86,8 @@ public class Day12 : Challenge<Day12>
 
                 var neighbourNode = map[neighbourCoordinates];
                 
-                if (neighbourNode.HeightValue - node.HeightValue > 1) continue;
-                
+                if ((!reverse && neighbourNode.HeightValue - node.HeightValue > 1) || (reverse && node.HeightValue - neighbourNode.HeightValue > 1)) continue;
+
                 visited.Add(neighbourCoordinates, neighbourNode with { Distance = node.Distance + 1 });
                 queue.Enqueue(neighbourCoordinates);
             }

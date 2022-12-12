@@ -32,12 +32,12 @@ public class Day12Tests
     }
     
     [Test]
-    public void Example_Part2_ShouldReturn0()
+    public void Example_Part2_ShouldReturn29()
     {
         // act
         var result = _day12.SolvePart2();
 
         // assert
-        Assert.That(result, Is.EqualTo(0));
+        Assert.That(result, Is.EqualTo(29));
     }
 }
