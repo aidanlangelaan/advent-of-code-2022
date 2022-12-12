@@ -11,20 +11,24 @@ public class Day12Tests
     {
         var testInput = new[]
         {
-            "put test values here",
+            "Sabqponm",
+            "abcryxxl",
+            "accszExk",
+            "acctuvwj",
+            "abdefghi",
         };
         
         _day12 = new Day12(testInput);
     }
 
     [Test]
-    public void Example_Part1_ShouldReturn0()
+    public void Example_Part1_ShouldReturn31()
     {
         // act
         var result = _day12.SolvePart1();
 
         // assert
-        Assert.That(result, Is.EqualTo(0));
+        Assert.That(result, Is.EqualTo(31));
     }
     
     [Test]
