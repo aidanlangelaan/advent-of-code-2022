@@ -11,20 +11,21 @@ public class Day14Tests
     {
         var testInput = new[]
         {
-            "put test values here",
+            "498,4 -> 498,6 -> 496,6",
+            "503,4 -> 502,4 -> 502,9 -> 494,9",
         };
         
         _day14 = new Day14(testInput);
     }
 
     [Test]
-    public void Example_Part1_ShouldReturn123()
+    public void Example_Part1_ShouldReturn24()
     {
         // act
         var result = _day14.SolvePart1();
 
         // assert
-        Assert.That(result, Is.EqualTo(123));
+        Assert.That(result, Is.EqualTo(24));
     }
     
     [Test]
