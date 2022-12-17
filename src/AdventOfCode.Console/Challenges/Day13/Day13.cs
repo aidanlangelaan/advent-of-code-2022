@@ -36,15 +36,15 @@ public class Day13 : Challenge<Day13>
         return correctPairIndexes.Sum();
     }
 
-    private int Compare(JsonNode left, JsonNode right)
+    private static int Compare(JsonNode? left, JsonNode? right)
     {
         if (left is JsonValue && right is JsonValue)
         {
             return (int)left - (int)right;
         }
 
-        var leftArray = left as JsonArray ?? new JsonArray((int)left);
-        var rightArray = right as JsonArray ?? new JsonArray((int)right);
+        var leftArray = left as JsonArray ?? new JsonArray((int)left!);
+        var rightArray = right as JsonArray ?? new JsonArray((int)right!);
 
         return leftArray
             .Zip(rightArray)
@@ -58,7 +58,7 @@ public class Day13 : Challenge<Day13>
         throw new NotImplementedException();
     }
 
-    private IEnumerable<JsonNode[]> GetPairs() =>
+    private IEnumerable<JsonNode?[]> GetPairs() =>
         _input.Where(x => !string.IsNullOrEmpty(x))
             .Select(x => JsonNode.Parse(x))
             .Chunk(2);

@@ -97,6 +97,7 @@ public class Day11 : Challenge<Day11>
             "-" => firstElem - secondElem,
             "*" => firstElem * secondElem,
             "/" => firstElem / secondElem,
+            _ => throw new ArgumentOutOfRangeException()
         };
         return item;
     }
@@ -141,8 +142,8 @@ public class Day11 : Challenge<Day11>
 
     private class Monkey
     {
-        public List<long> Items { get; init; }
-        public string Operation { get; init; }
+        public List<long> Items { get; init; } = null!;
+        public string Operation { get; init; } = null!;
         public int DivisibleBy { get; init; }
         public int TrueAction { get; init; }
         public int FalseAction { get; init; }
