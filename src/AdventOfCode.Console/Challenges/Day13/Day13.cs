@@ -36,6 +36,18 @@ public class Day13 : Challenge<Day13>
         return correctPairIndexes.Sum();
     }
 
+    public override int SolvePart2()
+    {
+        var pairs = GetPairs(true).ToList();
+        var simpleList = pairs.SelectMany(x => x).ToList();
+        simpleList.Sort(Compare);
+        
+        var part1 = simpleList.FindIndex(x => JsonNode.Parse("[[2]]")!.ToString().Equals(x.ToString())) + 1;
+        var part2 = simpleList.FindIndex(x => JsonNode.Parse("[[6]]")!.ToString().Equals(x.ToString())) + 1;
+
+        return part1 * part2;
+    }
+
     private static int Compare(JsonNode? left, JsonNode? right)
     {
         if (left is JsonValue && right is JsonValue)
@@ -53,13 +65,17 @@ public class Day13 : Challenge<Day13>
             .FirstOrDefault(x => x != 0, leftArray.Count - rightArray.Count);
     }
 
-    public override int SolvePart2()
+    private IEnumerable<JsonNode?[]> GetPairs(bool includeDividerPackages = false)
     {
-        throw new NotImplementedException();
-    }
-
-    private IEnumerable<JsonNode?[]> GetPairs() =>
-        _input.Where(x => !string.IsNullOrEmpty(x))
+        var input = _input.ToList();
+        if (includeDividerPackages)
+        {
+            input.Add("[[2]]");
+            input.Add("[[6]]");
+        }
+        
+        return input.Where(x => !string.IsNullOrEmpty(x))
             .Select(x => JsonNode.Parse(x))
             .Chunk(2);
+    }
 }
